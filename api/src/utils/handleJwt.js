@@ -1,6 +1,8 @@
 const jwt = require('jsonwebtoken');
-const JWT_SECRET = process.env.JWT_SECRET;
+require('dotenv').config();
+const JWT_SECRET = process.env.JWT_SECRET
 
+console.log("esta es la clave ", JWT_SECRET)
 const tokenSign = async (user) => {
     const sing = jwt.sign(
         {

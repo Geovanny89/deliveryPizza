@@ -5,6 +5,7 @@ const allUser = require('./Admin/User')
 const UserProducts = require('./User/Products')
 const register = require('./Auth/Auth')
 const users = require('./User/Users')
+const orderUser = require('./User/Order')
 
 
 const router = express();
@@ -15,6 +16,7 @@ router.use(allUser)
 router.use(UserProducts)
 router.use(register)
 router.use(users)
+router.use(orderUser)
 
 
 module.exports = router;

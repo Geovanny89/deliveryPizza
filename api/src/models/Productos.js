@@ -9,9 +9,12 @@ const productosSchema = mongoose.Schema({
         type:Number,
         require:true
     },
-    amount:{
+    stock:{
         type:Number,
         require: true
+    },
+    description:{
+        type:String
     },
     image:{
         type:String

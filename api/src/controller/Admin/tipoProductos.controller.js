@@ -90,7 +90,7 @@ const createTipeProduct = async(req,res )=>{
 const updateTipeName = async(req,res)=>{
     try {
         const {id}= req.params
-        console.log('hola',id)
+        
         
         if(!id){
             res.status(404).send("No existe ningun tipo con ese ID")

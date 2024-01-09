@@ -54,31 +54,12 @@ const productName = async(req,res)=>{
  * @param {Object} res - Objeto de respuesta de Express.
  * @returns {Promise<void>} Promesa que resuelve con la respuesta al cliente.
  */
-// const createProduct = async(req,res) =>{
-//     try {
-//         const {name, price} = req.body;
-//         const existingProduct = await Productos.findOne({name})
-//         if(existingProduct){
-//             res.status(400).send("El tipo ya existe");
-//             return;
-//         }
-//         if( !name || !price ){
-//             res.status(400).send("Por favor completa el formulario")
-//             return
-//         }
-//         const product = await Productos(req.body)
-//         await product.save()
-//         res.status(200).send(product)
-//     } catch (error) {
-//         console.log(error)
-//         res.status(500).json({ message: error.message })
-//     }
-// }
+
 
 
 const createProduct = async (req, res) => {
     try {
-        const { name, price, tipoId } = req.body;
+        const { name, price, tipoId,stock,description } = req.body;
 
         // Verifica si el producto ya existe
         const existingProduct = await Productos.findOne({ name });
@@ -98,7 +79,8 @@ const createProduct = async (req, res) => {
         const product = await Productos({
             name,
             price,
-            amount: req.body.amount || 0,
+            description,
+            stock,
             image: req.body.image || '',
             tipo: tipoId,
         });
@@ -127,7 +109,7 @@ const updateProduct = async (req,res)=>{
             res.status(404).send("No existe producto con ese ID")
             return
         }
-        const {name, price,image} = req.body
+        const {name, price,image,stock,description} = req.body
         const updateFields = {};
         if (name) {
             updateFields.name = name;
@@ -137,6 +119,12 @@ const updateProduct = async (req,res)=>{
         }
         if (image) {
             updateFields.image = image;
+        }
+        if (stock) {
+            updateFields.stock = stock;
+        }
+        if (description) {
+            updateFields.description = description;
         }
         const update = await Productos.findByIdAndUpdate(id, updateFields, { new: true });
         res.status(200).send(update)

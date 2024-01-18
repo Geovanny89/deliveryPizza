@@ -1,0 +1,78 @@
+.footer {
+  background-color: rgb(104, 166, 246);
+  padding: 20px;
+}
+
+.contact-address-container {
+  text-align: center;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap; /* Permitir que los elementos se envuelvan en pantallas más pequeñas */
+  justify-content: space-evenly;
+}
+
+
+
+.contact-section {
+  display: flex;
+  flex-direction: column;
+  padding-right: 0; /* Elimina el relleno a la derecha en pantallas pequeñas */
+  color: rgb(33, 32, 32);
+  text-align: left; /* Alinea al centro en pantallas pequeñas */
+}
+
+.contact-section a {
+  text-decoration: none;
+  font-size: 18px;
+  color: white;
+}
+.contact-section h5 {
+  font-size: 18px;
+  color: rgb(48, 47, 47);
+}
+
+.address-section{
+  padding-right: 0; /* Elimina el relleno a la derecha en pantallas pequeñas */
+  color: rgb(33, 32, 32);
+  text-align: left; /* Alinea al centro en pantallas pequeñas */
+}
+.address-section h5{
+  font-size: 18px;
+  color: rgb(48, 47, 47);
+}
+.address-section p{
+  color: white;
+}
+.social-section {
+ 
+  margin-top: 30px;
+  display: flex;
+  flex-wrap: wrap; /* Permitir que los elementos se envuelvan en pantallas más pequeñas */
+  justify-content: center; /* Alinea al centro en pantallas pequeñas */
+  gap: 35px;
+  transition: transform 1s ease;
+}
+.social-section a{
+ font-size: 25px;
+  color: rgb(255, 255, 255);
+}
+
+
+
+@keyframes zoomInAndOut {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.2);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+.social-section a:hover {
+  animation: zoomInAndOut 2s ease;
+}
+
+

@@ -1,0 +1,32 @@
+.contenedor-register{
+    /* background-color: rgb(51, 121, 234); */
+    border: 1px solid rgb(138, 137, 137);
+    border-radius: 8px;
+    margin-top: 25px;
+    height:auto;
+}
+
+.contenedor-register Button{
+    margin-top: 15px;
+    width: 80px;
+}
+.success-alert {
+    margin-top: 15px;
+    background-color: #4caf50;
+    color: #fff;
+    padding: 10px;
+    margin-bottom: 10px;
+    border-radius: 5px;
+    text-align: center;
+  }
+  
+  /* Estilos para el mensaje de error */
+  .error-alert {
+    background-color: #f44336;
+    color: #fff;
+    padding: 10px;
+    margin-top: 15px;
+    margin-bottom: 10px;
+    border-radius: 5px;
+    text-align: center;
+  }

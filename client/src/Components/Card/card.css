@@ -1,0 +1,56 @@
+/* card.css */
+
+.card-product {
+  border: 1px solid rgba(198, 196, 196, 0.459);
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center; /* Centra vertical y horizontalmente */
+  transition: transform 0.3s;
+  border-radius: 12px;
+  margin-left: 55px;
+  max-width: 70%;
+  height: 300px;
+  margin-top: 5px;
+}
+
+/* Estilo de zoom al pasar el mouse */
+.card-product:hover {
+  transform: scale(1.05);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+/* Estilo para la imagen principal */
+.card-img-top {
+  margin-top: 15px;
+  
+  width: 50%; /* Ancho del 70% de la carta */
+  height:180px; /* Altura automática para mantener la proporción */
+  object-fit: cover; /* Ajusta la imagen dentro del contenedor sin distorsionar la proporción */
+  border-radius: 12px 12px 0 0;
+}
+.card-img-top img{
+ 
+  width: 100%;
+  height: 80%;
+  display: block; /* Asegura que la imagen sea un elemento de bloque */
+  margin: 0 auto; /* Establece los márgenes izquierdo y derecho automáticamente para centrar la imagen */
+}
+
+/* Estilo para el cuerpo de la tarjeta */
+.card-body {
+  /* border: 1px solid red; */
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  margin-top: 10px;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  color: #333;
+}
+
+/* Estilo para el título y el texto */
+.card-title,
+.card-text {
+  margin-bottom: 5px;
+}

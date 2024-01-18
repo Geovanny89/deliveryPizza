@@ -7,7 +7,7 @@ const router = express();
 router.get('/all/tipes',authMiddleware,checkRol(["admin"]), allTipesProductos);
 router.get('/tipe/:name',authMiddleware,checkRol(["admin"]),tipeProductName)
 router.post('/createTipe',authMiddleware,checkRol(["admin"]),createTipeProduct);
-router.put('/update/tipe/:id,authMiddleware,checkRol(["admin"])',updateTipeName)
+router.put('/update/tipe/:id',authMiddleware,checkRol(["admin"]),updateTipeName)
 router.delete('/delete/tipe/:id',authMiddleware,checkRol(["admin"]), deleteTipe)
 
 

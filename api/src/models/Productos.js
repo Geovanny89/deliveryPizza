@@ -16,9 +16,9 @@ const productosSchema = mongoose.Schema({
     description:{
         type:String
     },
-    image:{
+    image:[{
         type:String
-    },
+    }],
     tipo:{ type: Schema.Types.ObjectId , ref: 'TipoProductos',
     required: true }
 })

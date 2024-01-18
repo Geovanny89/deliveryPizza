@@ -7,6 +7,7 @@ const register = require('./Auth/Auth')
 const users = require('./User/Users')
 const orderUser = require('./User/Order')
 const payment = require('./Payment/payment')
+const banner = require('./Admin/Banner')
 
 
 
@@ -20,6 +21,7 @@ router.use(register)
 router.use(users)
 router.use(orderUser)
 router.use(payment)
+router.use(banner)
 
 
 module.exports = router;

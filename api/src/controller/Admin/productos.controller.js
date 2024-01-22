@@ -158,10 +158,26 @@ const deleteProduct = async (req,res)=> {
         res.status(500).json({ message: error.message })
     }
 }
+const getProductId = async (req,res)=> {
+    try {
+        const {id}= req.params
+        if(!id){
+            res.status(404).send("No existe producto con ese ID")
+            return
+        }
+        const productId = await Productos.findById(id)
+    
+        res.status(200).send(productId)
+    } catch (error) {
+        console.log(error)
+        res.status(500).json({ message: error.message })
+    }
+}
 module.exports = {
     allProduct,
     productName,
     createProduct,
     updateProduct,
-    deleteProduct
+    deleteProduct,
+    getProductId
 }

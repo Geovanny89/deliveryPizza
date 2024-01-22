@@ -14,49 +14,7 @@ const allUser = async(req,res)=>{
     }
 }
 
-// const updateUser = async (req, res)=>{
-//     try {
-//         const {id}= req.params
-//         if(!id){
-//             res.status(404).send("No existe usuario con ese ID")
-//             return
-//         }
-       
-//         const {name,lastName,identity,email,password,phone,adress}= req.body
-//         if (!name && !lastName && !identity && !email && !password && !phone && !adress) {
-//             res.status(400).send("No se proporcionaron datos de actualización");
-//             return;
-//         }
-//         const updateUsers ={};
-//         if(name){
-//             updateUsers.name=name;
-//         }
-//         if(lastName){
-//             updateUsers.lastName=lastName;
-//         }
-//         if(identity){
-//             updateUsers.identity=identity;
-//         }
-//         if(email){
-//             updateUsers.email=email;
-//         }
-//         if(password){
-//             updateUsers.password=password;
-//         }
-//         if(phone){
-//             updateUsers.phone=phone;
-//         }
-//         if(adress){
-//             updateUsers.adress=adress;
-//         }
-//         const update = await User.findByIdAndUpdate(id,
-//             updateUsers,{new:true});
-//         res.status(200).send(update)
-//     } catch (error) {
-//         console.log(error)
-//         res.status(500).json({ message: error.message })
-//     }
-// }
+
 const updateUser = async (req, res) => {
     try {
         const { id } = req.params;

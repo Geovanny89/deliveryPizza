@@ -1,16 +1,17 @@
 import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
-import { createTipeProduct } from '../../../../Redux/Action';
-import { Snackbar, TextField } from '@mui/material';
-import './tipoProduct.css';
+import {  updateCategori } from '../../../../Redux/Action';
+import {  Snackbar, TextField } from '@mui/material';
+// import './tipoProduct.css';
 
-export default function TipoProduct() {
+export default function UpdateTipoProducto({id}) {
     const dispatch = useDispatch();
     const [tipeProduct, setTipeProduct] = useState('');
     const [success, setSuccess] = useState(false);
     const [error, setError] = useState('');
     const [isFormOpen, setIsFormOpen] = useState(true);
 
+    console.log("Hola soy el tipo ", tipeProduct)
     const handleChange = (e) => {
         setTipeProduct(e.target.value);
     };
@@ -22,7 +23,7 @@ export default function TipoProduct() {
             return;
         }
         try {
-            dispatch(createTipeProduct({ name: tipeProduct }));
+            dispatch(updateCategori(id,{ name: tipeProduct }));
             setSuccess(true);
             setTipeProduct('');
         } catch (error) {
@@ -40,9 +41,9 @@ export default function TipoProduct() {
         setSuccess(false);
         setError('');
     };
-
     return (
         <div>
+            <h3>Actualizar Tipo</h3>
             {isFormOpen && (
                 <form className='formContainer' onSubmit={handleSubmit}>
                     <div className='name-category'>
@@ -59,7 +60,7 @@ export default function TipoProduct() {
                         <a href="#" onClick={handleSubmit} className="create-link">
                             Crear
                         </a>
-                        <a href="#" onClick={handleCancel} className="cancel-link">
+                        <a href="/admin" onClick={handleCancel} className="cancel-link">
                             Cancelar
                         </a>
                     </div>
@@ -74,5 +75,7 @@ export default function TipoProduct() {
                 style={{ position: 'absolute', left: '50%', transform: 'translateX(-50%)' }}
             />
         </div>
-    );
+    )
 }
+
+

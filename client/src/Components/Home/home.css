@@ -1,4 +1,19 @@
-
-.row{
-    /* border: 1px solid red; */
-}
+.whatsapp-icon {
+  
+    position: fixed;
+    
+    
+    right: 20px;
+   
+  cursor: pointer;
+  z-index: 1000; 
+  }
+  .whatsapp-icon a{
+   
+    font-size: 40px;
+    
+    color: green;
+  }
+  .whatsapp-icon a:hover{
+    color: rgb(2, 2, 2);
+  }

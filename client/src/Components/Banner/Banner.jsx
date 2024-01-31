@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { Paper } from '@mui/material';
-import { allBanner } from '../../../Redux/Action';
+import { allBanner } from '../../Redux/Action';
 import Slider from 'react-slick';
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';

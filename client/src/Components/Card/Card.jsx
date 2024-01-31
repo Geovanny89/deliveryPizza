@@ -18,7 +18,7 @@ export default function Card({ name, image, price }) {
       {/* Información del producto en el cuerpo de la carta */}
       <hr />
       <div className="card-body text-center">
-        <a className="card-title">{name}</a>
+        <a className="card-title">nombre:{name}</a>
         <a className="card-text"> ${price}</a>
       </div>
     </div>

@@ -1,10 +1,29 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { FaHome, FaList, FaSignInAlt, FaShoppingCart } from 'react-icons/fa';
+import { useDispatch, useSelector } from 'react-redux';
 import logo from '../../Assets/logo-1.jpeg';
+import { getAllCategories, getNameProducts } from '../../Redux/Action';
+import Barra from '../utils/barra';
 
-export default function Navbar() {
+export default function Navbar({setCurrentPage}) {
+  const dispatch = useDispatch();
+  const categories = useSelector((state) => state.tipeProducts)
+  const [name,setName]=useState("")
+
+  useEffect(() => {
+    dispatch(getAllCategories())
+    dispatch(getNameProducts())
+  }, [])
+
+  function handleInputChange(e){
+    
+    dispatch(getNameProducts(e))  
+    setCurrentPage(1)
+
+}
   return (
     <div className="container text-center mt-7">
+      <Barra/>
       <nav className="navbar navbar-expand-lg navbar-light bg-info">
         <div className="container-fluid">
           <a className="navbar-brand" href="#" ><img src={logo} alt="Img Not Found" width="100px" /></a>
@@ -21,15 +40,31 @@ export default function Navbar() {
                   <FaList /> Categorias 
                 </a>
                 <ul className="dropdown-menu" aria-labelledby="navbarDropdown">
-                  <li><a className="dropdown-item" href="#">tv</a></li>
-                  <li><a className="dropdown-item" href="#">hogar</a></li>
-                  <li><a className="dropdown-item" href="#">cel</a></li>
-                  <li><a className="dropdown-item" href="#">moda</a></li>
-                  <li><a className="dropdown-item" href="#">otros</a></li>
+                {categories.length > 0 ? (
+                    categories.map((category) => (
+                      <li key={category.id}>
+                        <a className="dropdown-item" href="#">
+                          {category.name}
+                        </a>
+                      </li>
+                    ))
+                  ) : (
+                    <li >
+                      <a className="dropdown-item" href="#">
+                        Cargando categorías...
+                      </a>
+                    </li>
+                  )}
                 </ul>
               </li>
             </ul>
-            
+            <div>
+              <input type="text" 
+           placeholder="Buscar..."
+           value={name}
+           onChange={(e)=>{setName(e.target.value); handleInputChange(e.target.value)}}
+              />
+            </div>
             {/* Icono y enlace al carrito de compras */}
             <ul className="navbar-nav">
               <li className="nav-item">

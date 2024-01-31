@@ -5,7 +5,10 @@ const initialState = {
     products: [],
     allProducts: [],
     tipeProducts: [],
+    filteredProducts: [],
     banners: [],
+    detail: [],
+
     rol: "",
 }
 function rootreducer(state = initialState, action) {
@@ -29,6 +32,8 @@ function rootreducer(state = initialState, action) {
                 user: {},
                 rol: ""
             };
+        // reducer User
+
         case 'GET_USER_PRODUCT':
             return {
                 ...state,
@@ -41,14 +46,81 @@ function rootreducer(state = initialState, action) {
                 banners: action.payload,
 
             }
+        case 'GET_NAME':
+
+            let filteredProduct = action.payload === "" ? state.allProducts :
+                state.allProducts.filter((productNmae) => productNmae.name.toLowerCase().includes(action.payload.toLowerCase()))
+            return {
+                ...state,
+
+                filteredProducts: filteredProduct
+            }
+
+        case 'ALL_USER_CATEGORIES':
+            return {
+                ...state,
+                tipeProducts: action.payload
+            }
 
         //Reducer para admin
+        case 'CREATE_BANNER':
+            return {
+                ...state,
+                banners: action.payload
+            }
+        case 'DELETE_BANNER':
+            const filterBanner = state.banners.filter(
+                (baner) => baner.id !== action.payload
+            );
+            return {
+                ...state,
+                banners: filterBanner
+            }
+        case 'UPDATE_BANNER':
+            const banersUpdate = action.payload;
+            const updateBaner = state.banners.map(ban => {
+                if (ban.id === banersUpdate.id) {
+                    return banersUpdate;
+                }
+                return ban;
+            })
+            return {
+                ...state,
+                banners: updateBaner
+            }
+
+        //Product admin
         case 'POST_PRODUCT':
             return {
                 ...state,
                 allProducts: action.payload
             }
+        case 'UPDATE_PRODUCT':
+            const productUpdate = action.payload;
+
+            // Actualiza el tipo de PQRS en la lista
+            const updatedProducts = state.allProducts.map(product => {
+                if (product.id === productUpdate.id) {
+                    return productUpdate;
+                }
+                return product;
+            });
+            // console.log("Hola spy el producto ",updatedProducts)
+            return {
+                ...state,
+                allProducts: updatedProducts
+            }
+        case 'DELETE_PRODUCT':
+            const filterProducts = state.products.filter(
+                (product) => product.id !== action.payload
+            );
+
+            return {
+                ...state,
+                products: filterProducts
+            }
         case 'TYPE_PRODUCTS':
+
             return {
                 ...state,
                 tipeProducts: [...state.tipeProducts, action.payload]
@@ -58,6 +130,42 @@ function rootreducer(state = initialState, action) {
                 ...state,
                 tipeProducts: action.payload
             }
+        case 'DELETE_CATEGORI':
+            const filterCategori = state.tipeProducts.filter(
+                (categori) => categori.id !== action.payload
+            );
+
+            return {
+                ...state,
+                tipeProducts: filterCategori
+            }
+        case 'UPDATE_CATEGORI':
+            const categoriesUpdate = action.payload;
+            console.log("Holass shshs", categoriesUpdate)
+            const updateCategori = state.tipeProducts.map(cat => {
+                if (cat.id === categoriesUpdate.id) {
+                    return categoriesUpdate;
+                }
+                return cat;
+            })
+            return {
+                ...state,
+                tipeProducts: updateCategori
+            }
+
+        case 'ALL_USER':
+            return {
+                ...state,
+                user: action.payload
+            }
+
+
+        // case 'GET_DETAIL':
+        //     return {
+        //         ...state,
+        //         detail: action.payload
+        //     }
+
         default:
             return state;
     }

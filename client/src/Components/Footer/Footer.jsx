@@ -4,6 +4,7 @@ import { FaWhatsapp, FaEnvelope, FaFacebook, FaInstagram, FaTiktok, FaFacebookF 
 import './footer.css';
 
 export default function Footer() {
+  
   return (
     <footer className='footer'>
       <hr />
